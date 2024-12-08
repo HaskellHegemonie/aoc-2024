@@ -14,6 +14,6 @@ parse xs = zip (map read res) t
     (res, t') = unzip $ map (toTuple . splitOn ": ") $ lines xs
     t = map (map read . words) t'
 
-logic = sum . mconcat . map (\(res, (x:xs)) -> z xs [x] res)
+logic = sum . concatMap (\(res, (x:xs)) -> z xs [x] res)
 z [] prev want = take 1 $ filter (== want) prev
 z (x:xs) prev want = z xs (concatMap (\cur -> [x + cur, x * cur]) prev) want
