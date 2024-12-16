@@ -23,7 +23,7 @@ parse xs = (arr, zeroes)
     lements = mconcat l
     arr = listArray ((0, 0), pred *** pred $ (length l, length (head l))) lements
     zeroes = assocs arr & filter (\(i, e) -> e == '0') & map fst
-    
+
 
 logic :: (Arr, [Position]) -> Int
 logic (arr, pos) = pos & map (fst . getScore arr S.empty) & sum

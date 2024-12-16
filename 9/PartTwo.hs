@@ -15,7 +15,7 @@ main = do
   e <- getElems z
   print e
   pure ()
-  
+
 te z = do
   writeArray z 0 ("a", 1)
 parse :: String -> IO (IOArray Int (String, Int))
@@ -25,12 +25,6 @@ parse xs = newListArray (0, length a - 1) a
    a = i &
      zip [0..] &
      map (\(n, z) -> let z' = read [z] in if odd n then (".", z') else (div n 2 & show, z'))
-    
--- logic arr = do
-  -- where
-  --   test arr i = if arr ! i & snd & (== ".") then True else False
-  --   innerLogic arr l r = if r <= l then arr
-  
 
 test arr l r = if (l > r) then pure () else do
   (_, nd) <- readArray arr l
@@ -40,4 +34,4 @@ test arr l r = if (l > r) then pure () else do
     m = max nd zd
   writeArray arr l (z, m)
   writeArray arr r (if m == 0 then "." else z, zd & min 0)
-  test arr (l + 2) (r - 2) 
+  test arr (l + 2) (r - 2)

@@ -33,7 +33,7 @@ parse xs = map p l
        (\(x, y) -> (y, x))
       ) &
       (\(x:y:_) -> (x, y))
-  
+
 positionElapsed :: Position -> Velocity -> Position
 positionElapsed (x, y) (vx, vy) = f (x + vx * seconds, y + vy * seconds)
  where
@@ -46,11 +46,11 @@ getQuadrant (x, y)
  | x < midx && y < midy = Second
  | x > midx && y < midy = Third
  | True = Fourth
- 
+
  where
    midx = div bx 2
    midy = div by 2
-  
+
 
 test = positionElapsed (4, 2) (-3, 2)
 
@@ -62,5 +62,3 @@ logic pvl = pvl &
       groupBy (on (==) snd) &
       map length &
       product
-      
-    

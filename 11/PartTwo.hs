@@ -15,5 +15,4 @@ handleNum x
  | True = [x * 2024]
    where
      asStr = show x
-     (one, two) = splitAt (div (length asStr) 2) asStr 
-     
+     (one, two) = splitAt (div (length asStr) 2) asStr
